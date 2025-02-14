@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Earning Platform</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+            text-align: center;
+            min-width: 1024px; /* Force desktop view */
+        }
+        header {
+            background: #007bff;
+            color: white;
+            padding: 20px 0;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        main {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        section {
+            background: white;
+            border-radius: 12px;
+            margin: 20px 0;
+            padding: 25px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        .task-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            padding: 15px;
+        }
+        .task {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 15px;
+            padding: 20px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            background: #fff;
+        }
+        .task img {
+            width: 80px;
+            height: 80px;
+            border-radius: 10px;
+            object-fit: cover;
+        }
+        .task-content {
+            text-align: center;
+            width: 100%;
+        }
+        .task-buttons {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            width: 100%;
+        }
+        button {
+            padding: 12px 20px;
+            border: none;
+            border-radius: 6px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        .download-btn {
+            background: #28a745;
+            color: white;
+        }
+        .verify-btn {
+            background: #17a2b8;
+            color: white;
+        }
+        button:disabled {
+            background: #cccccc;
+            cursor: not-allowed;
+        }
+        #withdraw {
+            background: #dc3545;
+            padding: 15px 30px;
+            font-size: 18px;
+            margin-top: 20px;
+        }
+        h1, h2 {
+            color: #333;
+            margin: 20px 0;
+        }
+        #balance {
+            font-size: 32px;
+            color: #28a745;
+            font-weight: bold;
+            margin: 15px 0;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Earn Money From Apps and Surveys</h1>
+    </header>
+
+    <main>
+        <section id="apps">
+            <h2>Download Apps</h2>
+            <div class="task-list" id="app-list"></div>
+        </section>
+
+        <section id="surveys">
+            <h2>Complete Surveys</h2>
+            <div class="task-list" id="survey-list"></div>
+        </section>
+
+        <section id="tasks">
+            <h2>Complete Tasks</h2>
+            <div class="task-list" id="task-list"></div>
+        </section>
+
+        <section id="earnings">
+            <h2>Total Earnings</h2>
+            <p id="balance">0$</p>
+            <button id="withdraw">Withdraw Earnings</button>
+        </section>
+    </main>
+
+    <script>
+        function forceDesktopView() {
+            let isMobile = /Android|iPhone|iPad|iPod/i.test(navigator.userAgent);
+            if (isMobile) {
+                document.body.style.zoom = "1";
+            }
+        }
+
+        forceDesktopView();
+
+        const apps = [
+            {
+                name: "Timo",
+                link: "https://h5.touchchat.me/social/share/index-club-en.html?lg=ar&code=FYBHK4&gender=2&from=android&source=1&share_userid=146741149925&clone=4",
+                img: "https://www2.0zz0.com/2025/02/09/14/419888523.jpeg"
+            },
+            {
+                name: "Enter your number and download app",
+                link: "https://singingfiles.com/show.php?l=0&u=2295508&id=48946",
+                img: "https://www2.0zz0.com/2025/02/09/14/286869097.jpg"
+            },
+            {
+                name: "Enter phone number and download app",
+                link: "https://singingfiles.com/show.php?l=0&u=2295508&id=33875",
+                img: "https://www2.0zz0.com/2025/02/09/14/254238453.jpg"
+            },
+            {
+                name: "Earn by answering questions",
+                link: "https://rarearn5.blogspot.com/?m=1",
+                img: "https://www2.0zz0.com/2025/02/09/14/627173306.jpg"
+            },
+            {
+                name: "Clicklaps",
+                link: "https://clapslp.blogspot.com/?m=1",
+                img: "https://www2.0zz0.com/2025/02/09/14/987545301.jpg"
+            },
+            {
+                name: "Safe&box",
+                link: "https://psubaghardo.net/link?z=8918258&var={SOURCE_ID}&ymid={CLICK_ID}",
+                img: "https://www2.0zz0.com/2025/02/09/14/272340799.jpg"
+            },
+            {
+                name: "Vpn",
+                link: "https://psubaghardo.net/link?z=8918246&var={SOURCE_ID}&ymid={CLICK_ID}",
+                img: "https://www2.0zz0.com/2025/02/09/14/100551957.jpg"
+            }
+        ];
+
+        const surveys = [
+            {
+                name: "Finance services high",
+                link: "https://oojaishaibak.net/link?z=8693712&var={SOURCE_ID}&ymid={CLICK_ID}"
+            },
+            {
+                name: "Finance services 2",
+                link: "https://oojaishaibak.net/link?z=8612216&var={SOURCE_ID}&ymid={CLICK_ID}"
+            },
+            {
+                name: "Security services",
+                link: "https://choognibsaurde.com/link?z=8918880&var={SOURCE_ID}&ymid={CLICK_ID}"
+            },
+            {
+                name: "Sweep services",
+                link: "https://uzoudoognood.com/link?z=8706490&var={SOURCE_ID}&ymid={CLICK_ID}"
+            },
+            {
+                name: "Sweep services 2",
+                link: "https://uzoudoognood.com/link?z=8782720&var={SOURCE_ID}&ymid={CLICK_ID}"
+            },
+            {
+                name: "Dating services",
+                link: "https://woaptauphojo.com/link?z=8918893&var={SOURCE_ID}&ymid={CLICK_ID}"
+            },
+            {
+                name: "Finance services",
+                link: "https://oojaishaibak.net/link?z=8782707&var={SOURCE_ID}&ymid={CLICK_ID}"
+            },
+            {
+                name: "Betting services",
+                link: "https://roathoateefa.net/link?z=8782759&var={SOURCE_ID}&ymid={CLICK_ID}"
+            },
+            {
+                name: "Earning services",
+                link: "https://oojaishaibak.net/link?z=8918901&var={SOURCE_ID}&ymid={CLICK_ID}"
+            },
+            {
+                name: "Dating service",
+                link: "https://woaptauphojo.com/link?z=8706479&var={SOURCE_ID}&ymid={CLICK_ID}"
+            }
+        ];
+
+        const tasks = [
+            {
+                name: "Join Telegram group",
+                link: "https://t.me/+wmVQWjDvr_syYTk0"
+            },
+            {
+                name: "Join Telegram group",
+                link: "https://t.me/+YSQ6AxaIp3RkYmE0"
+            },
+            {
+                name: "Read article and wait 30 seconds",
+                link: "https://jawak.com/%D9%83%D9%8A%D9%81%D9%8A%D8%A9-%D8%A7%D9%84%D8%B1%D8%A8%D8%AD-%D9%85%D9%86-%D8%A7%D9%84%D8%A5%D9%86%D8%AA%D8%B1%D9%86%D8%AA-%D9%81%D9%8A-2025-70176"
+            },
+            {
+                name: "Complete offer",
+                link: "https://eglawiresoo.net/link?z=8627256&var={SOURCE_ID}&ymid={CLICK_ID}"
+            },
+            {
+                name: "Complete offer",
+                link: "https://eglawiresoo.net/link?z=8782646&var={SOURCE_ID}&ymid={CLICK_ID}"
+            },
+            {
+                name: "Complete offer (short link)",
+                link: "https://ouo.io/YkPVzq"
+            },
+            {
+                name: "Complete offer (short link)",
+                link: "https://ouo.io/oF2ibAn"
+            },
+            {
+                name: "Complete offer",
+                link: "https://eglawiresoo.net/link?z=8919471&var={SOURCE_ID}&ymid={CLICK_ID}"
+            },
+            {
+                name: "Download book",
+                link: "https://www.up-4ever.net/qx3ftufgk65h"
+            },
+            {
+                name: "Complete offer (short link)",
+                link: "https://shrinkme.ink/89Ohrmlj"
+            },
+            {
+                name: "Complete offer",
+                link: "https://eglawiresoo.net/link?z=8919458&var={SOURCE_ID}&ymid={CLICK_ID}"
+            },
+            {
+                name: "Complete offer (short link)",
+                link: "https://shrinkme.ink/hhbzJ"
+            },
+            {
+                name: "Download book",
+                link: "https://www.up-4ever.net/7h2l8py7usdt"
+            }
+        ];
+
+        // Load balance from localStorage
+        let balance = localStorage.getItem("balance") ? parseInt(localStorage.getItem("balance")) : 0;
+        let taskTimers = JSON.parse(localStorage.getItem("taskTimers")) || {};
+        let completedTasks = JSON.parse(localStorage.getItem("completedTasks")) || {};
+
+        function loadTasks() {
+            const appList = document.getElementById("app-list");
+            const surveyList = document.getElementById("survey-list");
+            const taskList = document.getElementById("task-list");
+
+            apps.forEach((app, index) => {
+                const div = document.createElement("div");
+                div.classList.add("task");
+                div.innerHTML = `
+                    ${app.img ? `<img src="${app.img}" alt="${app.name}">` : ''}
+                    <div class="task-content">
+                        <h3>${app.name}</h3>
+                        <div class="task-buttons">
+                            <button class="download-btn" onclick="startTask(${index}, 'app', '${app.link}')">Download App</button>
+                            <button class="verify-btn" id="verify-app-${index}" onclick="verifyTask(${index}, 'app')" disabled>Verify Completion</button>
+                        </div>
+                    </div>
+                `;
+                appList.appendChild(div);
+            });
+
+            surveys.forEach((survey, index) => {
+                const div = document.createElement("div");
+                div.classList.add("task");
+                div.innerHTML = `
+                    <div class="task-content">
+                        <h3>${survey.name}</h3>
+                        <div class="task-buttons">
+                            <button class="download-btn" onclick="startTask(${index}, 'survey', '${survey.link}')">Start Survey</button>
+                            <button class="verify-btn" id="verify-survey-${index}" onclick="verifyTask(${index}, 'survey')" disabled>Verify Completion</button>
+                        </div>
+                    </div>
+                `;
+                surveyList.appendChild(div);
+            });
+
+            tasks.forEach((task, index) => {
+                const div = document.createElement("div");
+                div.classList.add("task");
+                div.innerHTML = `
+                    <div class="task-content">
+                        <h3>${task.name}</h3>
+                        <div class="task-buttons">
+                            <button class="download-btn" onclick="startTask(${index}, 'task', '${task.link}')">Start Task</button>
+                            <button class="verify-btn" id="verify-task-${index}" onclick="verifyTask(${index}, 'task')" disabled>Verify Completion</button>
+                        </div>
+                    </div>
+                `;
+                taskList.appendChild(div);
+            });
+        }
+
+        function startTask(index, type, link) {
+            window.open(link, "_blank");
+            taskTimers[`${type}-${index}`] = Date.now();
+            document.getElementById(`verify-${type}-${index}`).disabled = false;
+        }
+
+        function verifyTask(index, type) {
+            const taskKey = `${type}-${index}`;
+            const verifyButton = document.getElementById(`verify-${type}-${index}`);
+            const taskStartTime = taskTimers[taskKey];
+
+            if (!taskStartTime || (Date.now() - taskStartTime) < 30000) {
+                alert("You haven't completed the task yet");
+                return;
+            }
+
+            if (completedTasks[taskKey]) {
+                alert("You've already received reward for this task!");
+                return;
+            }
+
+            balance += 5;
+            document.getElementById("balance").innerText = `${balance}$`;
+            completedTasks[taskKey] = true;
+            verifyButton.disabled = true;
+
+            // Save to localStorage
+            localStorage.setItem("balance", balance);
+            localStorage.setItem("taskTimers", JSON.stringify(taskTimers));
+            localStorage.setItem("completedTasks", JSON.stringify(completedTasks));
+        }
+
+        document.getElementById("withdraw").addEventListener("click", function() {
+            if (balance < 100) {
+                alert("Minimum withdrawal amount is $100!");
+            } else {
+                alert("Withdrawal request sent!");
+            }
+        });
+
+        document.getElementById("balance").innerText = `${balance}$`;
+
+        loadTasks();
+    </script>
+</body>
+</html>
