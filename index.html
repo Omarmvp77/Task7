@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ar">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Earning Platform</title>
+    <title>منصة الربح</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -11,7 +11,7 @@
             padding: 0;
             background-color: #f4f4f4;
             text-align: center;
-            min-width: 1024px; /* Force desktop view */
+            min-width: 1024px; /* يجبر الصفحة على عرض نسخة سطح المكتب */
         }
         header {
             background: #007bff;
@@ -103,29 +103,29 @@
 </head>
 <body>
     <header>
-        <h1>Earn Money From Apps and Surveys</h1>
+        <h1>اربح المال من التطبيقات والاستبيانات</h1>
     </header>
 
     <main>
         <section id="apps">
-            <h2>Download Apps</h2>
+            <h2>تحميل التطبيقات</h2>
             <div class="task-list" id="app-list"></div>
         </section>
 
         <section id="surveys">
-            <h2>Complete Surveys</h2>
+            <h2>إكمال الاستبيانات</h2>
             <div class="task-list" id="survey-list"></div>
         </section>
 
         <section id="tasks">
-            <h2>Complete Tasks</h2>
+            <h2>تنفيذ المهام</h2>
             <div class="task-list" id="task-list"></div>
         </section>
 
         <section id="earnings">
-            <h2>Total Earnings</h2>
-            <p id="balance">0$</p>
-            <button id="withdraw">Withdraw Earnings</button>
+            <h2>إجمالي الأرباح</h2>
+            <p id="balance">0 جنيه</p>
+            <button id="withdraw">سحب الأرباح</button>
         </section>
     </main>
 
@@ -134,11 +134,12 @@
             let isMobile = /Android|iPhone|iPad|iPod/i.test(navigator.userAgent);
             if (isMobile) {
                 document.body.style.zoom = "1";
+                // تم إزالة سطر التنبيه فقط
             }
         }
 
         forceDesktopView();
-
+     
         const apps = [
             {
                 name: "Timo",
@@ -146,17 +147,17 @@
                 img: "https://www2.0zz0.com/2025/02/09/14/419888523.jpeg"
             },
             {
-                name: "Enter your number and download app",
+                name: "قم بكتابة رقمك وحمل التطبيق",
                 link: "https://singingfiles.com/show.php?l=0&u=2295508&id=48946",
                 img: "https://www2.0zz0.com/2025/02/09/14/286869097.jpg"
             },
             {
-                name: "Enter phone number and download app",
+                name: "قم بكتابة رقم هاتفك وحمل التطبيق",
                 link: "https://singingfiles.com/show.php?l=0&u=2295508&id=33875",
                 img: "https://www2.0zz0.com/2025/02/09/14/254238453.jpg"
             },
             {
-                name: "Earn by answering questions",
+                name: "الربح من الرد على الاسئله",
                 link: "https://rarearn5.blogspot.com/?m=1",
                 img: "https://www2.0zz0.com/2025/02/09/14/627173306.jpg"
             },
@@ -164,11 +165,6 @@
                 name: "Clicklaps",
                 link: "https://clapslp.blogspot.com/?m=1",
                 img: "https://www2.0zz0.com/2025/02/09/14/987545301.jpg"
-            },
-            {
-                name: "Safe&box",
-                link: "https://psubaghardo.net/link?z=8918258&var={SOURCE_ID}&ymid={CLICK_ID}",
-                img: "https://www2.0zz0.com/2025/02/09/14/272340799.jpg"
             },
             {
                 name: "Vpn",
@@ -187,7 +183,7 @@
                 link: "https://oojaishaibak.net/link?z=8612216&var={SOURCE_ID}&ymid={CLICK_ID}"
             },
             {
-                name: "Security services",
+                name: "Securty services",
                 link: "https://choognibsaurde.com/link?z=8918880&var={SOURCE_ID}&ymid={CLICK_ID}"
             },
             {
@@ -199,83 +195,135 @@
                 link: "https://uzoudoognood.com/link?z=8782720&var={SOURCE_ID}&ymid={CLICK_ID}"
             },
             {
-                name: "Dating services",
-                link: "https://woaptauphojo.com/link?z=8918893&var={SOURCE_ID}&ymid={CLICK_ID}"
-            },
-            {
                 name: "Finance services",
                 link: "https://oojaishaibak.net/link?z=8782707&var={SOURCE_ID}&ymid={CLICK_ID}"
             },
             {
-                name: "Betting services",
+                name: "Beting services",
                 link: "https://roathoateefa.net/link?z=8782759&var={SOURCE_ID}&ymid={CLICK_ID}"
             },
             {
                 name: "Earning services",
                 link: "https://oojaishaibak.net/link?z=8918901&var={SOURCE_ID}&ymid={CLICK_ID}"
-            },
-            {
-                name: "Dating service",
-                link: "https://woaptauphojo.com/link?z=8706479&var={SOURCE_ID}&ymid={CLICK_ID}"
             }
         ];
 
         const tasks = [
             {
-                name: "Join Telegram group",
+                name: "انضم لجروب التلجرام",
                 link: "https://t.me/+wmVQWjDvr_syYTk0"
             },
             {
-                name: "Join Telegram group",
+                name: "انضم لجروب التلجرام",
                 link: "https://t.me/+YSQ6AxaIp3RkYmE0"
             },
             {
-                name: "Read article and wait 30 seconds",
+                name: "اقرأ المقالة وانتظر 30 ثانية",
                 link: "https://jawak.com/%D9%83%D9%8A%D9%81%D9%8A%D8%A9-%D8%A7%D9%84%D8%B1%D8%A8%D8%AD-%D9%85%D9%86-%D8%A7%D9%84%D8%A5%D9%86%D8%AA%D8%B1%D9%86%D8%AA-%D9%81%D9%8A-2025-70176"
             },
             {
-                name: "Complete offer",
+                name: "اكمل العرض",
                 link: "https://eglawiresoo.net/link?z=8627256&var={SOURCE_ID}&ymid={CLICK_ID}"
             },
             {
-                name: "Complete offer",
+                name: "اكمل العرض",
                 link: "https://eglawiresoo.net/link?z=8782646&var={SOURCE_ID}&ymid={CLICK_ID}"
             },
             {
-                name: "Complete offer (short link)",
+                name: "اكمل العرض (رابط مختصر)",
                 link: "https://ouo.io/YkPVzq"
             },
             {
-                name: "Complete offer (short link)",
+                name: "اكمل العرض (رابط مختصر)",
                 link: "https://ouo.io/oF2ibAn"
             },
             {
-                name: "Complete offer",
+                name: "اكمل العرض",
                 link: "https://eglawiresoo.net/link?z=8919471&var={SOURCE_ID}&ymid={CLICK_ID}"
             },
             {
-                name: "Download book",
+                name: "حمل الكتاب",
                 link: "https://www.up-4ever.net/qx3ftufgk65h"
             },
             {
-                name: "Complete offer (short link)",
+                name: "اكمل العرض (رابط مختصر)",
                 link: "https://shrinkme.ink/89Ohrmlj"
             },
             {
-                name: "Complete offer",
+                name: "اكمل العرض",
                 link: "https://eglawiresoo.net/link?z=8919458&var={SOURCE_ID}&ymid={CLICK_ID}"
             },
             {
-                name: "Complete offer (short link)",
+                name: "اكمل العرض (رابط مختصر)",
                 link: "https://shrinkme.ink/hhbzJ"
             },
             {
-                name: "Download book",
+                name: "حمل الكتاب",
                 link: "https://www.up-4ever.net/7h2l8py7usdt"
+            },
+            {
+                name: "تصفح اول 10 مقالات",
+                link: "https://gamerev7.blogspot.com"
+            },
+            {
+                name: "تصفح اول 10 مقالات",
+                link: "https://appnoo6.blogspot.com"
+            },
+            {
+                name: "تصفح اول 10 مقالات",
+                link: "https://gamup9.blogspot.com"
+            },
+            {
+                name: "تصفح اول 10 مقالات",
+                link: "https://moongam7.blogspot.com"
+            },
+            {
+                name: "تصفح اول 10 مقالات",
+                link: "https://zygame4.blogspot.com"
+            },
+            {
+                name: "شاهد الفديو لمدة 3 دقائق وقم بالتمرير لاسفل",
+                link: "https://wa619.blogspot.com"
+            },
+            {
+                name: "شاهد الفديو لمدة 3 دقائق وقم بالتمرير لاسفل",
+                link: "https://da62222.blogspot.com"
+            },
+            {
+                name: "شاهد الفديو لمدة 3 دقائق وقم بالتمرير لاسفل",
+                link: "https://mp3gomov.blogspot.com"
+            },
+            {
+                name: "شاهد الفديو لمدة 3 دقائق وقم بالتمرير لاسفل",
+                link: "https://dafome9.blogspot.com"
+            },
+            {
+                name: "شاهد الفديو لمدة 3 دقائق وقم بالتمرير لاسفل",
+                link: "https://go-77mr.blogspot.com/"
+            },
+            {
+                name: "شاهد الفديو لمدة 3 دقائق وقم بالتمرير لاسفل",
+                link: "https://covidio2.blogspot.com"
+            },
+            {
+                name: "شاهد الفديو لمدة 3 دقائق وقم بالتمرير لاسفل",
+                link: "https://watch833.blogspot.com"
+            },
+            {
+                name: "شاهد الفديو لمدة 3 دقائق وقم بالتمرير لاسفل",
+                link: "https://vidmach.blogspot.com"
+            },
+            {
+                name: "شاهد الفديو لمدة 3 دقائق وقم بالتمرير لاسفل",
+                link: "https://watching54.blogspot.com"
+            },
+            {
+                name: "شاهد الفديو لمدة 3 دقائق وقم بالتمرير لاسفل",
+                link: "https://roblix73.blogspot.com"
             }
         ];
 
-        // Load balance from localStorage
+        // تحميل الرصيد من الـ localStorage
         let balance = localStorage.getItem("balance") ? parseInt(localStorage.getItem("balance")) : 0;
         let taskTimers = JSON.parse(localStorage.getItem("taskTimers")) || {};
         let completedTasks = JSON.parse(localStorage.getItem("completedTasks")) || {};
@@ -293,8 +341,8 @@
                     <div class="task-content">
                         <h3>${app.name}</h3>
                         <div class="task-buttons">
-                            <button class="download-btn" onclick="startTask(${index}, 'app', '${app.link}')">Download App</button>
-                            <button class="verify-btn" id="verify-app-${index}" onclick="verifyTask(${index}, 'app')" disabled>Verify Completion</button>
+                            <button class="download-btn" onclick="startTask(${index}, 'app', '${app.link}')">تحميل التطبيق</button>
+                            <button class="verify-btn" id="verify-app-${index}" onclick="verifyTask(${index}, 'app')" disabled>تحقق من التنفيذ</button>
                         </div>
                     </div>
                 `;
@@ -308,8 +356,8 @@
                     <div class="task-content">
                         <h3>${survey.name}</h3>
                         <div class="task-buttons">
-                            <button class="download-btn" onclick="startTask(${index}, 'survey', '${survey.link}')">Start Survey</button>
-                            <button class="verify-btn" id="verify-survey-${index}" onclick="verifyTask(${index}, 'survey')" disabled>Verify Completion</button>
+                            <button class="download-btn" onclick="startTask(${index}, 'survey', '${survey.link}')">بدء الاستبيان</button>
+                            <button class="verify-btn" id="verify-survey-${index}" onclick="verifyTask(${index}, 'survey')" disabled>تحقق من الإكمال</button>
                         </div>
                     </div>
                 `;
@@ -323,8 +371,8 @@
                     <div class="task-content">
                         <h3>${task.name}</h3>
                         <div class="task-buttons">
-                            <button class="download-btn" onclick="startTask(${index}, 'task', '${task.link}')">Start Task</button>
-                            <button class="verify-btn" id="verify-task-${index}" onclick="verifyTask(${index}, 'task')" disabled>Verify Completion</button>
+                            <button class="download-btn" onclick="startTask(${index}, 'task', '${task.link}')">بدء المهمة</button>
+                            <button class="verify-btn" id="verify-task-${index}" onclick="verifyTask(${index}, 'task')" disabled>تحقق من الإنهاء</button>
                         </div>
                     </div>
                 `;
@@ -343,38 +391,44 @@
             const verifyButton = document.getElementById(`verify-${type}-${index}`);
             const taskStartTime = taskTimers[taskKey];
 
-            if (!taskStartTime || (Date.now() - taskStartTime) < 30000) {
-                alert("You haven't completed the task yet");
+            // تحديد الوقت المطلوب بناءً على نوع المهمة
+            let requiredTime = 30000; // 30 ثانية بشكل افتراضي
+            if (type === "task" && (index === 13 || index === 14)) {
+                requiredTime = 180000; // 3 دقائق للمهام الجديدة
+            }
+
+            if (!taskStartTime || (Date.now() - taskStartTime) < requiredTime) {
+                alert("لم تقم بإكمال المهمة");
                 return;
             }
 
             if (completedTasks[taskKey]) {
-                alert("You've already received reward for this task!");
+                alert("لقد حصلت على المكافأة لهذه المهمة من قبل!");
                 return;
             }
 
-            balance += 5;
-            document.getElementById("balance").innerText = `${balance}$`;
+            balance += 100;
+            document.getElementById("balance").innerText = `${balance} جنيه`;
             completedTasks[taskKey] = true;
             verifyButton.disabled = true;
 
-            // Save to localStorage
+            // حفظ البيانات في الـ localStorage
             localStorage.setItem("balance", balance);
             localStorage.setItem("taskTimers", JSON.stringify(taskTimers));
             localStorage.setItem("completedTasks", JSON.stringify(completedTasks));
         }
 
         document.getElementById("withdraw").addEventListener("click", function() {
-            if (balance < 100) {
-                alert("Minimum withdrawal amount is $100!");
+            if (balance < 4000) {
+                alert("الحد الأدنى للسحب هو 4000 جنيه!");
             } else {
-                alert("Withdrawal request sent!");
+                alert("تم إرسال طلب السحب!");
             }
         });
 
-        document.getElementById("balance").innerText = `${balance}$`;
+        document.getElementById("balance").innerText = `${balance} جنيه`;
 
         loadTasks();
     </script>
 </body>
-</html>
+    </html>
